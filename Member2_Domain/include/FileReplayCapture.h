@@ -1,3 +1,6 @@
+#ifndef FILE_REPLAY_CAPTURE_H
+#define FILE_REPLAY_CAPTURE_H
+
 #include <string>
 #include <fstream>
 #include "AttendanceCapture.h"
@@ -15,3 +18,5 @@ class FileReplayCapture : public AttendanceCapture {
         void captureNext() override;
         void endSession() override;
 };
+
+#endif

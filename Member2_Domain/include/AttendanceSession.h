@@ -1,3 +1,6 @@
+#ifndef ATTENDANCE_SESSION_H
+#define ATTENDANCE_SESSION_H
+
 #include <string>
 #include <vector>
 using namespace std;
@@ -19,3 +22,5 @@ class AttendanceSession{
         void closeSession();
         vector<AttendanceRecord> getRecords() const;
 };
+
+#endif

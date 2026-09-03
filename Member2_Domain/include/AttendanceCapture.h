@@ -1,3 +1,6 @@
+#ifndef ATTENDANCE_CAPTURE_H
+#define ATTENDANCE_CAPTURE_H
+
 #include<string>
 using namespace std;
 
@@ -10,3 +13,5 @@ class AttendanceCapture {
         virtual string captureNext() = 0;
         virtual void endSession() = 0;
 };
+
+#endif
