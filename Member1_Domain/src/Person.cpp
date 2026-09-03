@@ -13,6 +13,3 @@ std::string Person::getID() const {
 bool Person::checkPassword(std::string password) const {
     return this->Password == password;
 }
-
-// Note: displayDashboard() is pure virtual in the header (= 0), 
-// so we do not implement it here; it belongs in the derived classes.
