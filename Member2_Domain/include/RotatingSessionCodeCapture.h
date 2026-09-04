@@ -3,8 +3,7 @@
 
 #include <string>
 #include "AttendanceCapture.h"
-
-class AttendanceSession;
+#include "AttendanceCapture.h"
 
 class RotatingSessionCodeCapture : public AttendanceCapture {
     private:

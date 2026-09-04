@@ -15,7 +15,7 @@ class FileReplayCapture : public AttendanceCapture {
     public:
         FileReplayCapture (const string& path);
         void beginSession(AttendanceSession* session) override;
-        void captureNext() override;
+        string captureNext() override;
         void endSession() override;
 };
 

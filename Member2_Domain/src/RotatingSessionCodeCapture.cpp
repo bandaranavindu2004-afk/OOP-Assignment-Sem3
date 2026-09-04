@@ -11,7 +11,7 @@ string RotatingSessionCodeCapture::generateNewCode(){
     return currentActiveCode;
 }
 
-void RotatingSessionCodeCapture::beginSession() {
+void RotatingSessionCodeCapture::beginSession(AttendanceSession* session) {
     generateNewCode();
     expiryTime = "1 minute";
     cout<< "Rotating Session Started: " <<endl;

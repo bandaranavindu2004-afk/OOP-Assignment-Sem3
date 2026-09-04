@@ -1,5 +1,6 @@
 #include <iostream>
 #include "AttendanceCapture.h"
+#include "FileReplayCapture.h"
 using namespace std;
 
 FileReplayCapture::FileReplayCapture(const string& path) : filePath(path) {}
@@ -12,7 +13,7 @@ void FileReplayCapture::beginSession (AttendanceSession* session){
     }
 }
 
-void captureNext::FileReplayCapture() {
+string FileReplayCapture::captureNext() {
     string studentID;
 
     if(fileStream >> studentID){
@@ -21,7 +22,7 @@ void captureNext::FileReplayCapture() {
     return "Empty";
 }
 
-void endSession::FileReplayCapture(){
+void FileReplayCapture::endSession(){
     if(fileStream.is_open()){
         fileStream.close();
     }

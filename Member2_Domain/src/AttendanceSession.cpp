@@ -18,7 +18,7 @@ void AttendanceSession::markPresent(string studentid, string method){
         cout << "Error: Session is inactive." << endl;
         return;
     }
-    AttendanceRecord record(studentID, "Present", method);
+    AttendanceRecord record(studentid, "Present", method);
     records.push_back(record);
 }
 
