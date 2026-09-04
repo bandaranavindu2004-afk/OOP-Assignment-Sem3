@@ -1,11 +1,12 @@
 #include <iostream>
 #include "AttendanceRegister.h"
+using namespace std;
 
 AttendanceRegister::AttendanceRegister() {} // Vector starts empty
 
 AttendanceSession& AttendanceRegister::startNewSession(TimeSlot slot, int duration, AttendanceCapture* capture) {
     // Create a unique session ID based on current session count
-    std::string newSessionId = "SES_" + std::to_string(sessions.size() + 1);
+    string newSessionId = "SES_" + to_string(sessions.size() + 1);
 
     // Create session object which matches AttendanceSession constructor
     AttendanceSession newSession(newSessionId, slot, duration, capture);
@@ -17,7 +18,7 @@ AttendanceSession& AttendanceRegister::startNewSession(TimeSlot slot, int durati
     return sessions.back();
 }
 
-double AttendanceRegister::getAttendancePercentage(std::string studentId) const {
+double AttendanceRegister::getAttendancePercentage(string studentId) const {
     if (sessions.empty()) {
         return 0.0;
     }
@@ -27,7 +28,7 @@ double AttendanceRegister::getAttendancePercentage(std::string studentId) const 
 
     // Iterate through all the recorded sessions
     for (const AttendanceSession& session : sessions) {
-        std::vector<AttendanceRecord> records = session.getRecords();
+        vector<AttendanceRecord> records = session.getRecords();
         
         // Check if a student exists in the session records
         for (const AttendanceRecord& record : records) {
@@ -42,18 +43,18 @@ double AttendanceRegister::getAttendancePercentage(std::string studentId) const 
 }
 
 void AttendanceRegister::generateReport() const {
-    std::cout << "=============== ATTENDANCE REPORT ===============" << std::endl;
-    std::cout << "Total Sessions: " << sessions.size() << std::endl;
+    cout << "=============== ATTENDANCE REPORT ===============" << endl;
+    cout << "Total Sessions: " << sessions.size() << endl;
 
     for (int i = 0; i < sessions.size(); ++i) {
-        std::vector<AttendanceRecord> records = sessions[i].getRecords();
-        std::cout << "Session Number " << (i + 1) << " => Total Present: " << records.size() << std::endl;
+        vector<AttendanceRecord> records = sessions[i].getRecords();
+        cout << "Session Number " << (i + 1) << " => Total Present: " << records.size() << endl;
 
         for (const AttendanceRecord& record : records) {
-            std::cout << " # Student ID: " << record.getStudentID();
-            std::cout << " => Status: " << record.getStatus();
-            std::cout << " => Method: " << record.getCapturedBy() << std::endl;
+            cout << " # Student ID: " << record.getStudentID();
+            cout << " => Status: " << record.getStatus();
+            cout << " => Method: " << record.getCapturedBy() << endl;
         }
     }
-    std::cout << "================================================" << std::endl;
+    cout << "================================================" << endl;
 }

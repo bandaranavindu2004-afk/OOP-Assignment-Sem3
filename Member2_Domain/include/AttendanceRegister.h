@@ -6,10 +6,11 @@
 #include "AttendanceSession.h"
 #include "Timeslot.h"
 #include "AttendanceCapture.h"
+using namespace std;
 
 class AttendanceRegister {
 private:
-    std::vector<AttendanceSession> sessions;
+    vector<AttendanceSession> sessions;
 
 public:
     AttendanceRegister();
@@ -18,7 +19,7 @@ public:
     AttendanceSession& startNewSession(TimeSlot slot, int duration, AttendanceCapture* capture);
 
     // Calculates attendance percentage for a student for all sessions
-    double getAttendancePercentage(std::string studentId) const;
+    double getAttendancePercentage(string studentId) const;
 
     // Prints an attendance report for all sessions
     void generateReport() const;
