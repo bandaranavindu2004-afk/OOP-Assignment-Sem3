@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-class Lecturer; // Forward declaration
-class Student;  // Forward declaration
+class Lecturer; 
+class Student;  
 
 class Course {
 protected:
@@ -20,11 +20,10 @@ public:
     Course(std::string code, std::string title, int credits, int capacity, Lecturer* lec);
     virtual ~Course() = default;
 
-    // Pure virtual function making this an abstract class
     virtual std::string calculateGrade() = 0;
 
     void addStudent(Student* student);
     std::string getCode() const;
 };
 
-#endif
+#endif 

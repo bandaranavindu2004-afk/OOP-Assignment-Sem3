@@ -22,4 +22,4 @@ void Student::enrollCourse(std::string courseCode) {
 // Return the list of enrolled courses
 std::vector<std::string> Student::getEnrolledCourses() const {
     return enrolledCourses;
-}
+} 

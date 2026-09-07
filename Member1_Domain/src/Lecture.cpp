@@ -5,4 +5,4 @@ Lecture::Lecture(std::string code, std::string title, int credits, int cap, Lect
 
 std::string Lecture::calculateGrade() {
     return "Lecture Grade: Calculated from Final Exam and Midterms.";
-}
+} 

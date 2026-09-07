@@ -5,4 +5,4 @@ Project::Project(std::string code, std::string title, int credits, int cap, Lect
 
 std::string Project::calculateGrade() {
     return "Project Grade: Calculated from Final Presentation and Report.";
-}
+} 
