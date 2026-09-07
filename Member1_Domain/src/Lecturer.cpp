@@ -1,12 +1,11 @@
 #include "../include/Lecturer.h"
 #include <iostream>
 
-// Initialize the static variable
 int Lecturer::LecturerNumber = 0;
 
 Lecturer::Lecturer(std::string id, std::string name, std::string email, std::string password)
     : Person(id, name, email, password) {
-    LecturerNumber++; // Auto-increment when a new lecturer is created
+    LecturerNumber++; 
 }
 
 void Lecturer::displayDashboard() {

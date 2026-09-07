@@ -17,7 +17,6 @@ public:
     // Override the pure virtual dashboard method
     void displayDashboard() override;
 
-    // Student-specific methods
     void enrollCourse(std::string courseCode);
     std::vector<std::string> getEnrolledCourses() const;
 };

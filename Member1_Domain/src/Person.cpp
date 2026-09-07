@@ -1,6 +1,5 @@
 #include "../include/Person.h"
 
-// Constructor implementation using an initialization list
 Person::Person(std::string id, std::string name, std::string email, std::string password)
     : ID(id), Name(name), Email(email), Password(password) {}
 

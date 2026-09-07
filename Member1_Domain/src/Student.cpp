@@ -8,7 +8,7 @@ Student::Student(std::string id, std::string name, std::string email, std::strin
 // Implement the dashboard display for students
 void Student::displayDashboard() {
     std::cout << "=== Student Dashboard ===" << std::endl;
-    std::cout << "Name: " << getID() << std::endl; // or use a getName() if added later
+    std::cout << "Name: " << getID() << std::endl; 
     std::cout << "Major: " << major << std::endl;
     std::cout << "Enrolled Courses Count: " << enrolledCourses.size() << std::endl;
 }
