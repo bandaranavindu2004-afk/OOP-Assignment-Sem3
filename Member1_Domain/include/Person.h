@@ -18,4 +18,4 @@ public:
     bool checkPassword(std::string password) const;
 };
 
-#endif
+#endif 

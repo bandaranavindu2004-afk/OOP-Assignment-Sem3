@@ -5,4 +5,4 @@ Lab::Lab(std::string code, std::string title, int credits, int cap, Lecturer* le
 
 std::string Lab::calculateGrade() {
     return "Lab Grade: Calculated from Weekly Practical Assignments.";
-}
+} 

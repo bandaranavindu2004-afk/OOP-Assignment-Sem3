@@ -10,4 +10,4 @@ public:
     Lecture(std::string code, std::string title, int credits, int cap, Lecturer* lec, std::string prereq);
     std::string calculateGrade() override;
 };
-#endif
+#endif 
