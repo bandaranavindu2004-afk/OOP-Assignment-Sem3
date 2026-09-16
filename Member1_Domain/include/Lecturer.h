@@ -1,11 +1,12 @@
 #ifndef LECTURER_H
 #define LECTURER_H
-
 #include "Person.h"
 #include <vector>
 #include <string>
 
 class Course; 
+class TimeSlot;
+class AttendanceCapture;
 
 class Lecturer : public Person {
 private:
@@ -13,9 +14,12 @@ private:
     std::vector<Course*> assignedCourses;
 
 public:
-    Lecturer(std::string id, std::string name, std::string email, std::string password);
-    void displayDashboard() override;
-    
-};
+    Lecturer(std::string name, std::string email, std::string password);
+    ~Lecturer() override = default;
 
+    void displayDashboard() override;
+    std::vector<Course*> displayAssignedCourses() const;
+    void openAttendanceSession(Course* course, TimeSlot slot, int duration, AttendanceCapture* capture);
+    void closeAttendanceSession(Course* course);
+};
 #endif

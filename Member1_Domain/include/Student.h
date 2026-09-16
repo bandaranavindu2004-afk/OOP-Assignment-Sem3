@@ -1,22 +1,24 @@
 #ifndef STUDENT_H
 #define STUDENT_H
-
 #include "Person.h"
 #include <vector>
 #include <string>
 
+class Course; 
+
 class Student : public Person {
 private:
-    std::string major;
-    std::vector<std::string> enrolledCourses;
+    static int StudentNumber; 
+    std::vector<Course*> enrolledCourses;
 
 public:
-    Student(std::string id, std::string name, std::string email, std::string password, std::string major);
+    Student(std::string name, std::string email, std::string password);
+    ~Student() override = default;
 
     void displayDashboard() override;
-
-    void enrollCourse(std::string courseCode);
-    std::vector<std::string> getEnrolledCourses() const;
+    std::vector<Course*> displayEnrolledCourses() const;
+    void enrollInCourse(Course* course);
+    void viewTimetable() const;
+    void checkInAttendance(std::string code);
 };
-
 #endif
