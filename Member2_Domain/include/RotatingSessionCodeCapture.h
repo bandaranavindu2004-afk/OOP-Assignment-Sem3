@@ -1,7 +1,9 @@
+#ifndef ROTATING_SESSION_CODE_CAPTURE_H
+#define ROTATING_SESSION_CODE_CAPTURE_H
+
 #include <string>
 #include "AttendanceCapture.h"
-
-class AttendanceSession;
+#include "AttendanceCapture.h"
 
 class RotatingSessionCodeCapture : public AttendanceCapture {
     private:
@@ -13,4 +15,6 @@ class RotatingSessionCodeCapture : public AttendanceCapture {
         void beginSession(AttendanceSession* session) override;
         string captureNext() override;
         void endSession() override;
-    }
+};
+
+#endif

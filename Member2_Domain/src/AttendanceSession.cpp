@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "AttendanceSession.h"
-#include "Timeslot.h"
-#include "AttendanceCapture.h"
-#include "AttendanceRecord.h"
+#include "../include/AttendanceSession.h"
+#include "../include/Timeslot.h"
+#include "../include/AttendanceCapture.h"
+#include "../include/AttendanceRecord.h"
 
 AttendanceSession::AttendanceSession(string id, TimeSlot slot, int duration, AttendanceCapture* capture) : sessionID(id), timeslot(slot), durationMinutes(duration) {
     this->isOpen=true;
@@ -18,7 +18,7 @@ void AttendanceSession::markPresent(string studentid, string method){
         cout << "Error: Session is inactive." << endl;
         return;
     }
-    AttendanceRecord record(studentID, "Present", method);
+    AttendanceRecord record(studentid, "Present", method);
     records.push_back(record);
 }
 
