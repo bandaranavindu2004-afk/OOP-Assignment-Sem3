@@ -18,9 +18,8 @@ private:
     Lecturer* assignedLecturer;
     std::vector<Student*> enrolledStudents;
     
-    // Composition pointers
-    TimeTable* courseTimetable;
-    AttendanceRegister* courseRegister;
+    TimeTable* timetable; 
+    AttendanceRegister* attendanceRegister; 
 
 public:
     Course(std::string code, std::string title, int credits, int cap, Lecturer* lec);
@@ -34,7 +33,7 @@ public:
     void removeStudent(Student* student);
     
     const TimeTable& getTimetable() const; 
-    AttendanceRegister* getAttendanceRegister() const; 
+    AttendanceRegister& getAttendanceRegister(); 
     
     // --- Added for Integration (Not in UML) ---
     double getAttendancePercentage(std::string studentId) const;
