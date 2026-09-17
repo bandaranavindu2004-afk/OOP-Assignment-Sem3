@@ -1,10 +1,12 @@
 #include "../include/Course.h"
+#include "../include/Student.h"  
+#include "../include/Lecturer.h" 
+
+#include "../../Member2_Domain/include/Timetable.h" 
+#include "../../Member2_Domain/include/AttendanceRegister.h"
+
 #include <algorithm>
 #include <iostream> 
-
-// Pulling in Member 2's headers
-#include "../../Member2_Domain/include/TimeTable.h"
-#include "../../Member2_Domain/include/AttendanceRegister.h"
 
 Course::Course(std::string code, std::string title, int credits, int cap, Lecturer* lec)
     : Code(code), Title(title), CreditValue(credits), Capacity(cap), assignedLecturer(lec),
@@ -25,7 +27,6 @@ std::string Course::getCode() const {
 bool Course::hasCapacity() const {
     return enrolledStudents.size() < Capacity;
 }
-// -----------------------------------------------------
 
 void Course::addStudent(Student* student) {
     if (enrolledStudents.size() < Capacity) {
@@ -37,14 +38,10 @@ void Course::removeStudent(Student* student) {
     enrolledStudents.erase(std::remove(enrolledStudents.begin(), enrolledStudents.end(), student), enrolledStudents.end());
 }
 
-const TimeTable& Course::getTimetable() const {
+const Timetable& Course::getTimetable() const {
     return *timetable; 
 }
 
 AttendanceRegister& Course::getAttendanceRegister() {
     return *attendanceRegister; 
-}
-
-double Course::getAttendancePercentage(std::string studentId) const {
-    return 0.0; 
 }

@@ -1,8 +1,7 @@
 #include "../include/Student.h"
 #include "../include/Course.h" 
-#include "../../Member2_Domain/include/TimeTable.h" 
+#include "../../Member2_Domain/include/Timetable.h" 
 #include "../../Member2_Domain/include/TimeSlot.h" 
-
 #include "../../Member3_Domain/include/Exceptions.h" 
 
 #include <iostream>
