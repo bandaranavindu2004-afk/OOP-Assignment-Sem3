@@ -23,15 +23,14 @@ std::vector<Course*> Student::displayEnrolledCourses() const {
 }
 
 void Student::enrollInCourse(Course* course) {
-    // 1. Check Capacity 
     if (!course->hasCapacity()) {
         throw EnrollmentException(); 
     }
 
-    std::vector<TimeSlot> newCourseSlots = course->getTimetable().getSlots();
+    std::vector<TimeSlot> newCourseSlots = course->getTimetable().getTimeSlots();
     
     for (Course* existingCourse : enrolledCourses) {
-        std::vector<TimeSlot> existingSlots = existingCourse->getTimetable().getSlots();
+        std::vector<TimeSlot> existingSlots = existingCourse->getTimetable().getTimeSlots();
         
         for (const TimeSlot& newSlot : newCourseSlots) {
             for (const TimeSlot& existingSlot : existingSlots) {
