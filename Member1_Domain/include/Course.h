@@ -2,11 +2,10 @@
 #define COURSE_H
 #include <string>
 #include <vector>
-#include <iostream> 
 
 class Lecturer;
 class Student;
-class TimeTable; 
+class Timetable;  
 class AttendanceRegister;
 
 class Course {
@@ -18,7 +17,7 @@ private:
     Lecturer* assignedLecturer;
     std::vector<Student*> enrolledStudents;
     
-    TimeTable* timetable; 
+    Timetable* timetable; 
     AttendanceRegister* attendanceRegister; 
 
 public:
@@ -35,10 +34,7 @@ public:
     void addStudent(Student* student);
     void removeStudent(Student* student);
     
-    const TimeTable& getTimetable() const; 
+    const Timetable& getTimetable() const; 
     AttendanceRegister& getAttendanceRegister(); 
-    
-    double getAttendancePercentage(std::string studentId) const;
-    friend std::ostream& operator<<(std::ostream& os, const Course& c);
 };
 #endif
