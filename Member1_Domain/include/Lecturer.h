@@ -1,11 +1,12 @@
 #ifndef LECTURER_H
 #define LECTURER_H
+
 #include "Person.h"
 #include <vector>
 #include <string>
+#include "../../Member2_Domain/include/TimeSlot.h" 
 
 class Course; 
-class TimeSlot;
 class AttendanceCapture;
 
 class Lecturer : public Person {

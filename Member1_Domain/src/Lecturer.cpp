@@ -1,9 +1,6 @@
 #include "../include/Lecturer.h"
 #include <iostream>
 
-// Pulling in Member 2's actual header
-#include "../../Member2_Domain/include/TimeSlot.h"
-
 int Lecturer::LecturerNumber = 0;
 
 Lecturer::Lecturer(std::string name, std::string email, std::string password)
