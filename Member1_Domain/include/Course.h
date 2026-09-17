@@ -2,15 +2,11 @@
 #define COURSE_H
 #include <string>
 #include <vector>
-#include <iostream> // Added for Member 3's operator<<
+#include <iostream> 
 
-// Forward declarations for Member 2's engines
 class Lecturer;
 class Student;
-class TimeTable; // Updated to match Member 2's capital 'T'
-class TimeSlot;
-class AttendanceCapture;
-class AttendanceSession;
+class TimeTable; 
 class AttendanceRegister;
 
 class Course {
@@ -22,6 +18,7 @@ private:
     Lecturer* assignedLecturer;
     std::vector<Student*> enrolledStudents;
     
+    // Composition pointers
     TimeTable* courseTimetable;
     AttendanceRegister* courseRegister;
 
@@ -35,8 +32,7 @@ public:
     void removeStudent(Student* student);
     
     const TimeTable& getTimetable() const; 
-    AttendanceSession* startNewSession(TimeSlot slot, int duration, AttendanceCapture* capture);
-    bool hasClashWith(const TimeTable& other) const; 
+    AttendanceRegister* getAttendanceRegister() const; 
     double getAttendancePercentage(std::string studentId) const;
 
     // Integration with Member 3's Utilities
