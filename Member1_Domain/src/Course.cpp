@@ -18,6 +18,15 @@ void Course::displayInfo() const {
               << "Enrolled Students: " << enrolledStudents.size() << "/" << Capacity << "\n";
 }
 
+std::string Course::getCode() const {
+    return Code;
+}
+
+bool Course::hasCapacity() const {
+    return enrolledStudents.size() < Capacity;
+}
+// -----------------------------------------------------
+
 void Course::addStudent(Student* student) {
     if (enrolledStudents.size() < Capacity) {
         enrolledStudents.push_back(student);
@@ -29,7 +38,7 @@ void Course::removeStudent(Student* student) {
 }
 
 const TimeTable& Course::getTimetable() const {
-    return *timetable; // Returns reference as required
+    return *timetable; 
 }
 
 AttendanceRegister& Course::getAttendanceRegister() {

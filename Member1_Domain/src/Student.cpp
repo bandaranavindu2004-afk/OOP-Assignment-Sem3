@@ -1,5 +1,12 @@
 #include "../include/Student.h"
+#include "../include/Course.h" 
+#include "../../Member2_Domain/include/TimeTable.h" 
+#include "../../Member2_Domain/include/TimeSlot.h" 
+
+#include "../../Member3_Domain/include/Exceptions.h" 
+
 #include <iostream>
+#include <vector>
 
 int Student::StudentNumber = 0;
 
@@ -16,7 +23,27 @@ std::vector<Course*> Student::displayEnrolledCourses() const {
 }
 
 void Student::enrollInCourse(Course* course) {
+    // 1. Check Capacity 
+    if (!course->hasCapacity()) {
+        throw EnrollmentException(); 
+    }
+
+    std::vector<TimeSlot> newCourseSlots = course->getTimetable().getSlots();
+    
+    for (Course* existingCourse : enrolledCourses) {
+        std::vector<TimeSlot> existingSlots = existingCourse->getTimetable().getSlots();
+        
+        for (const TimeSlot& newSlot : newCourseSlots) {
+            for (const TimeSlot& existingSlot : existingSlots) {
+                if (newSlot == existingSlot) { 
+                    throw TimetableClashException();
+                }
+            }
+        }
+    }
+
     enrolledCourses.push_back(course);
+    course->addStudent(this); 
 }
 
 void Student::viewTimetable() const {

@@ -28,6 +28,9 @@ public:
     virtual std::string calculateGrading() = 0; 
 
     void displayInfo() const; 
+    
+    std::string getCode() const;
+    bool hasCapacity() const;
 
     void addStudent(Student* student);
     void removeStudent(Student* student);
@@ -35,7 +38,6 @@ public:
     const TimeTable& getTimetable() const; 
     AttendanceRegister& getAttendanceRegister(); 
     
-    // --- Added for Integration (Not in UML) ---
     double getAttendancePercentage(std::string studentId) const;
     friend std::ostream& operator<<(std::ostream& os, const Course& c);
 };
