@@ -8,8 +8,7 @@
 
 Course::Course(std::string code, std::string title, int credits, int cap, Lecturer* lec)
     : Code(code), Title(title), CreditValue(credits), Capacity(cap), assignedLecturer(lec),
-      courseTimetable(nullptr), courseRegister(nullptr) {} 
-
+      timetable(nullptr), attendanceRegister(nullptr) {} 
 
 void Course::displayInfo() const {
     std::cout << "Course Code: " << Code << "\n"
@@ -30,11 +29,11 @@ void Course::removeStudent(Student* student) {
 }
 
 const TimeTable& Course::getTimetable() const {
-    return *courseTimetable; 
+    return *timetable; // Returns reference as required
 }
 
-AttendanceRegister* Course::getAttendanceRegister() const {
-    return courseRegister; 
+AttendanceRegister& Course::getAttendanceRegister() {
+    return *attendanceRegister; 
 }
 
 double Course::getAttendancePercentage(std::string studentId) const {
