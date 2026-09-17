@@ -13,7 +13,7 @@ class Course {
 private:
     std::string Code;
     std::string Title;
-    int Credits;
+    int CreditValue; 
     int Capacity;
     Lecturer* assignedLecturer;
     std::vector<Student*> enrolledStudents;
@@ -26,16 +26,18 @@ public:
     Course(std::string code, std::string title, int credits, int cap, Lecturer* lec);
     virtual ~Course() = default;
 
-    virtual std::string calculateGrade() = 0; 
+    virtual std::string calculateGrading() = 0; 
+
+    void displayInfo() const; 
 
     void addStudent(Student* student);
     void removeStudent(Student* student);
     
     const TimeTable& getTimetable() const; 
     AttendanceRegister* getAttendanceRegister() const; 
+    
+    // --- Added for Integration (Not in UML) ---
     double getAttendancePercentage(std::string studentId) const;
-
-    // Integration with Member 3's Utilities
     friend std::ostream& operator<<(std::ostream& os, const Course& c);
 };
 #endif
