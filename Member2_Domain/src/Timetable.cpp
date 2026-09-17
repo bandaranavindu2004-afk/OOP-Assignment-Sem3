@@ -1,4 +1,4 @@
-#include "Timetable.h"
+#include "../include/Timetable.h"
 using namespace std;
 
 Timetable::Timetable() {}

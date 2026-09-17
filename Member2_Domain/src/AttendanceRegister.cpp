@@ -1,5 +1,5 @@
 #include <iostream>
-#include "AttendanceRegister.h"
+#include "../include/AttendanceRegister.h"
 using namespace std;
 
 AttendanceRegister::AttendanceRegister() {} // Vector starts empty

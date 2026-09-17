@@ -1,5 +1,5 @@
 #include <ctime>
-#include "CorrectionEntry.h"
+#include "../include/CorrectionEntry.h"
 using namespace std;
 
 CorrectionEntry::CorrectionEntry(string author, string reasonText) : correctedBy(author), reason(reasonText) {

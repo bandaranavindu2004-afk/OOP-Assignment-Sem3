@@ -1,5 +1,5 @@
 #include <ctime>
-#include "AttendanceRecord.h"
+#include "../include/AttendanceRecord.h"
 using namespace std;
 
 AttendanceRecord::AttendanceRecord(std::string studId, std::string status, std::string method) : studentId(studId), status(status), capturedBy(method) {

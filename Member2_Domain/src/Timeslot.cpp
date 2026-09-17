@@ -1,5 +1,5 @@
 #include <sstream>
-#include "TimeSlot.h"
+#include "../include/TimeSlot.h"
 using namespace std;
 
 TimeSlot::TimeSlot() : startTime("00:00"), durationMinutes(0) {}

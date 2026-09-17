@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
-#include "RotatingSessionCodeCapture.h"
+#include "../include/RotatingSessionCodeCapture.h"
 using namespace std;
 
 RotatingSessionCodeCapture::RotatingSessionCodeCapture(){}

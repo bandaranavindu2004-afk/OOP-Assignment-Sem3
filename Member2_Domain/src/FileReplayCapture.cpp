@@ -1,6 +1,6 @@
 #include <iostream>
-#include "AttendanceCapture.h"
-#include "FileReplayCapture.h"
+#include "../include/AttendanceCapture.h"
+#include "../include/FileReplayCapture.h"
 using namespace std;
 
 FileReplayCapture::FileReplayCapture(const string& path) : filePath(path) {}
