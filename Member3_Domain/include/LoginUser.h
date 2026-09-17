@@ -1,7 +1,7 @@
 #ifndef LOGINUSER_H
 #define LOGINUSER_H
 
-#include "Person.h"
+#include "../../Member1_Domain/include/Person.h"
 #include "Repository.h"
 using namespace std;
 

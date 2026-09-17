@@ -1,4 +1,4 @@
-#include "Exceptions.h"
+#include "../include/Exceptions.h"
 
 const char* EnrollmentException::what() const noexcept {
     return "Enrolment Exception";

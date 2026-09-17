@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-#include "Person.h"
-#include "Course.h"
-#include "TimeTable.h"
+#include "../../Member1_Domain/include/Person.h"
+#include "../../Member1_Domain/include/Course.h"
+#include "../../Member2_Domain/include/TimeTable.h"
 
 using namespace std;
 

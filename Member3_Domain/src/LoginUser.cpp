@@ -1,6 +1,6 @@
-#include "LoginUser.h"
-#include "Repository.h"
-#include "Person.h"
+#include "../include/LoginUser.h"
+#include "../include/Repository.h"
+#include "../../Member1_Domain/include/Person.h"
 
 #include <iostream>
 #include <string>

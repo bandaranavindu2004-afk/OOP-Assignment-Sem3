@@ -3,8 +3,8 @@
 
 #include <string>
 #include "Repository.h"
-#include "Person.h"
-#include "Course.h"
+#include "../../Member1_Domain/include/Person.h"
+#include "../../Member1_Domain/include/Course.h"
 
 using namespace std;
 

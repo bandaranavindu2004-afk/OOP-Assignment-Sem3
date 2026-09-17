@@ -1,7 +1,7 @@
-#include "StorageManager.h"
-#include "Repository.h"
-#include "Person.h"
-#include "Course.h"
+#include "../include/StorageManager.h"
+#include "../include/Repository.h"
+#include "../../Member1_Domain/include/Person.h"
+#include "../../Member1_Domain/include/Course.h"
 
 using namespace std;
 

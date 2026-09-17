@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include "Course.h"
+#include "../../Member1_Domain/include/Course.h"
 using namespace std;
 
 
@@ -17,7 +17,7 @@ class EnrollmentCart{
     void addCourse(Course* course);
     void removeCourse(Course* course);
     vector<string> showAllCourses();
-    bool finalizeRegistration();
+    bool finalizeRegistration(Student* student);
 
 };
 

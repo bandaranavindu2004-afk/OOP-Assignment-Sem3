@@ -1,5 +1,8 @@
-#include "EnrollmentCart.h"
-#include "Course.h"
+#include "../include/EnrollmentCart.h"
+#include "../../Member1_Domain/include/Course.h"
+#include "../../Member1_Domain/include/Student.h"
+#include "../include/Exceptions.h"
+#include <iostream>
 
 using namespace std;
 
@@ -43,12 +46,20 @@ vector<string> EnrollmentCart::showAllCourses()
 
 
 // Finalize registration
-bool EnrollmentCart::finalizeRegistration()
+bool EnrollmentCart::finalizeRegistration(Student* student)
 {
-    if (selectedCourses.empty())
-    {
-        return false;
-    }
+    if (selectedCourses.empty()) return false;
 
+    for (Course* course : selectedCourses) {
+        try {
+            student->enrollInCourse(course);
+            course->addStudent(student);
+        } catch (const UniversityException& e) {
+                cout << "Enrollment failed for " << course->getCode() 
+                      << ": " << e.what() << endl;
+            return false;  
+        }
+    }
+    selectedCourses.clear();
     return true;
 }
