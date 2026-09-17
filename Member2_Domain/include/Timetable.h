@@ -6,23 +6,25 @@
 #include "TimeSlot.h"
 using namespace std;
 
-class TimeTable {
+class Timetable {
 private:
     vector<TimeSlot> slots;
 
 public:
-    TimeTable();
+    Timetable();
 
     void addSlot(TimeSlot slot);
-    vector<TimeSlot> getSlots() const;
+    vector<TimeSlot> getTimeSlots() const;
     void displayTable() const;
 
     // Operator Overloading
-    TimeTable& operator+=(const TimeSlot& slot); // Add slot with +=
+    Timetable& operator+=(const TimeSlot& slot); // Add slot with +=
     TimeSlot operator[](int index) const;        // Access slot with []
     
     // Stream Insertion Operator
-    friend ostream& operator<<(ostream& os, const TimeTable& table);
+    friend ostream& operator<<(ostream& os, const Timetable& table);
+
+    bool hasClashWith(const Timetable& other) const;
 };
 
 #endif

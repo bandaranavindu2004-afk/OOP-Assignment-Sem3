@@ -1,33 +1,33 @@
-#include "TimeTable.h"
+#include "Timetable.h"
 using namespace std;
 
-TimeTable::TimeTable() {}
+Timetable::Timetable() {}
 
-void TimeTable::addSlot(TimeSlot slot) {
+void Timetable::addSlot(TimeSlot slot) {
     slots.push_back(slot);
 }
 
-vector<TimeSlot> TimeTable::getSlots() const {
+vector<TimeSlot> Timetable::getTimeSlots() const {
     return slots;
 }
 
-void TimeTable::displayTable() const {
+void Timetable::displayTable() const {
     std::cout << *this; // Reuses the overloaded operator<<
 }
 
 // Overloading +=
-TimeTable& TimeTable::operator+=(const TimeSlot& slot) {
+Timetable& Timetable::operator+=(const TimeSlot& slot) {
     this->slots.push_back(slot);
     return *this; // Return reference to allow chaining ( t += s1 += s2)
 }
 
 // Overloading []
-TimeSlot TimeTable::operator[](int index) const {
+TimeSlot Timetable::operator[](int index) const {
     return slots[index];
 }
 
 // Stream Insertion Operator
-ostream& operator<<(ostream& os, const TimeTable& table) {
+ostream& operator<<(ostream& os, const Timetable& table) {
     os << "===== Scheduled Time Slots =====" << endl;
     if (table.slots.empty()) {
         os << "No time slots scheduled." << endl;
@@ -37,4 +37,16 @@ ostream& operator<<(ostream& os, const TimeTable& table) {
         }
     }
     return os;
+}
+
+bool Timetable::hasClashWith(const Timetable& other) const {
+    const std::vector<TimeSlot>& otherSlots = other.getTimeSlots();
+    for (size_t i = 0; i < timeslots.size(); ++i) {
+        for (size_t j = 0; j < otherSlots.size(); ++j) {
+            if (timeslots[i] == otherSlots[j]) {
+                return true; // Clash found
+            }
+        }
+    }
+    return false; // No clashes
 }
