@@ -17,6 +17,7 @@ public:
 
     // Creates a new session, add it to the vector and returns a reference
     AttendanceSession& startNewSession(TimeSlot slot, int duration, AttendanceCapture* capture);
+    const vector<AttendanceSession>& getSessions() const;
 
     // Calculates attendance percentage for a student for all sessions
     double getAttendancePercentage(string studentId) const;

@@ -6,16 +6,12 @@ AttendanceRegister::AttendanceRegister() {} // Vector starts empty
 
 AttendanceSession& AttendanceRegister::startNewSession(TimeSlot slot, int duration, AttendanceCapture* capture) {
     // Create a unique session ID based on current session count
-    string newSessionId = "SES_" + to_string(sessions.size() + 1);
+    std::string newSessionId = "SES_" + std::to_string(this->sessions.size() + 1);
 
-    // Create session object which matches AttendanceSession constructor
-    AttendanceSession newSession(newSessionId, slot, duration, capture);
+    // Instantiate and store inside member vector
+    this->sessions.push_back(AttendanceSession(newSessionId, slot, duration, capture));
 
-    // Storing in vector
-    sessions.push_back(newSession);
-
-    // Return the reference of the created session inside the vector
-    return sessions.back();
+    return this->sessions.back();
 }
 
 double AttendanceRegister::getAttendancePercentage(string studentId) const {
