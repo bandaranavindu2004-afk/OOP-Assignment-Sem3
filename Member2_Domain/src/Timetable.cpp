@@ -28,9 +28,9 @@ TimeSlot Timetable::operator[](int index) const {
 
 bool Timetable::hasClashWith(const Timetable& other) const {
     const std::vector<TimeSlot>& otherSlots = other.getTimeSlots();
-    for (size_t i = 0; i < timeslots.size(); ++i) {
+    for (size_t i = 0; i < slots.size(); ++i) {
         for (size_t j = 0; j < otherSlots.size(); ++j) {
-            if (timeslots[i] == otherSlots[j]) {
+            if (slots[i] == otherSlots[j]) {
                 return true; // Clash found
             }
         }

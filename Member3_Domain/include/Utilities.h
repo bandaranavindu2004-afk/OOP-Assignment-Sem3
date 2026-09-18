@@ -11,6 +11,6 @@ using namespace std;
 
 ostream& operator<<(ostream& os, const Person& p);
 ostream& operator<<(ostream& os, const Course& c);
-ostream& operator<<(ostream& os, const TimeTable& tt);
+ostream& operator<<(ostream& os, const Timetable& tt);
 
 #endif

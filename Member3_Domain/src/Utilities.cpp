@@ -22,9 +22,9 @@ ostream& operator<<(ostream& os, const Course& c)
 
 
 
-ostream& operator<<(ostream& os, const TimeTable& table)
+ostream& operator<<(ostream& os, const Timetable& table)
 {
-    vector<TimeSlot> slots = table.getSlots();
+    vector<TimeSlot> slots = table.getTimeSlots();
 
     os << "TimeTable:" << endl;
 
