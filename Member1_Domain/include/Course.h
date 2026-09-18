@@ -36,6 +36,16 @@ public:
     
     bool hasCapacity() const;
 
+    std::string getTitle() const;
+    int getCreditValue() const;
+    int getCapacity() const;
+    Lecturer* getAssignedLecturer() const;
+
+    void setTitle(std::string title);
+    void setCreditValue(int credits);
+    void setCapacity(int cap);
+    void setAssignedLecturer(Lecturer* lec);
+
     void addStudent(Student* student);
     void removeStudent(Student* student);
     
