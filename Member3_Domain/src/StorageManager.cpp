@@ -207,3 +207,131 @@ void StorageManager::loadAll(Repository<Person>& userRepo,
         cout << "Course file not found." << endl;
     }
 }
+void StorageManager::saveAll(Repository<Person>& userRepo,
+                             Repository<Course>& courseRepo)
+{
+    // SAVE USERS
+
+    ofstream userFile(userFilePath);
+
+    if (!userFile.is_open())
+    {
+        cout << "Error: Could not open user file."
+             << endl;
+
+        return;
+    }
+
+    vector<Person*> users = userRepo.getAll();
+
+    for (Person* person : users)
+    {
+        if (person == nullptr)
+            continue;
+
+        string role;
+
+        if (dynamic_cast<Student*>(person) != nullptr)
+        {
+            role = "STUDENT";
+        }
+        else if (dynamic_cast<Lecturer*>(person) != nullptr)
+        {
+            role = "LECTURER";
+        }
+        else if (dynamic_cast<Administrator*>(person) != nullptr)
+        {
+            role = "ADMIN";
+        }
+        else
+        {
+            continue;
+        }
+
+        userFile
+            << role << "|"
+            << person->getID() << "|"
+            << person->getName() << "|"
+            << person->getEmail() << "|"
+            << person->getPassword()
+            << endl;
+    }
+
+    userFile.close();
+
+    cout << "Users saved successfully." << endl;
+
+
+    // SAVE COURSES
+
+    ofstream courseFile(courseFilePath);
+
+    if (!courseFile.is_open())
+    {
+        cout << "Error: Could not open course file."
+             << endl;
+
+        return;
+    }
+
+    vector<Course*> courses = courseRepo.getAll();
+
+    for (Course* course : courses)
+    {
+        if (course == nullptr)
+            continue;
+
+        string type;
+        string prerequisite;
+
+
+        if (Lecture* lecture =
+                dynamic_cast<Lecture*>(course))
+        {
+            type = "LECTURE";
+            prerequisite =
+                lecture->getPrerequisites();
+        }
+        else if (Lab* lab =
+                     dynamic_cast<Lab*>(course))
+        {
+            type = "LAB";
+            prerequisite =
+                lab->getPrerequisites();
+        }
+        else if (Project* project =
+                     dynamic_cast<Project*>(course))
+        {
+            type = "PROJECT";
+            prerequisite =
+                project->getPrerequisites();
+        }
+        else
+        {
+            continue;
+        }
+
+        string lecturerId = "NONE";
+
+        if (course->getAssignedLecturer() != nullptr)
+        {
+            lecturerId =
+                course->getAssignedLecturer()->getID();
+        }
+
+
+        courseFile
+            << type << "|"
+            << course->getCode() << "|"
+            << course->getTitle() << "|"
+            << course->getCreditValue() << "|"
+            << course->getCapacity() << "|"
+            << lecturerId << "|"
+            << prerequisite
+            << endl;
+    }
+
+    courseFile.close();
+
+    cout << "Courses saved successfully." << endl;
+}
