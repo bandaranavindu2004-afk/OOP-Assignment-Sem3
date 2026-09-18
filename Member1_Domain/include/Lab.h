@@ -9,5 +9,6 @@ private:
 public:
     Lab(std::string code, std::string title, int credits, int cap, Lecturer* lec, std::string prereq);
     std::string calculateGrading() override; // FIXED: Matches UML
+    std::string getPrerequisites() const;
 };
 #endif

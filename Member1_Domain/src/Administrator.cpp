@@ -3,9 +3,22 @@
 
 int Administrator::AdministratorNumber = 0;
 
-Administrator::Administrator(std::string name, std::string email, std::string password)
-    : Person("ADM-" + std::to_string(++AdministratorNumber), name, email, password) {}
+Administrator::Administrator(std::string id,
+                             std::string name,
+                             std::string email,
+                             std::string password)
+    : Person(id, name, email, password)
+{
+    if (id.rfind("ADM-", 0) == 0)
+    {
+        int number = std::stoi(id.substr(4));
 
+        if (number > AdministratorNumber)
+        {
+            AdministratorNumber = number;
+        }
+    }
+}
 void Administrator::displayDashboard() {
     std::cout << "=== Administrator Dashboard ===" << std::endl;
     std::cout << "Admin ID: " << getID() << std::endl;

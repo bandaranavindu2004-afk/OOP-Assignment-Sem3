@@ -15,7 +15,10 @@ private:
     std::vector<Course*> assignedCourses;
 
 public:
-    Lecturer(std::string name, std::string email, std::string password);
+    Lecturer(std::string id,
+         std::string name,
+         std::string email,
+         std::string password);
     ~Lecturer() override = default;
 
     void displayDashboard() override;

@@ -7,7 +7,9 @@ class Lecture : public Course {
 private:      
     std::string Prerequisites;
 public:
+    
     Lecture(std::string code, std::string title, int credits, int cap, Lecturer* lec, std::string prereq);
-    std::string calculateGrading() override; // FIXED: Matches UML
+    std::string calculateGrading() override;
+    std::string getPrerequisites() const;
 };
 #endif

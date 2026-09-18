@@ -6,3 +6,7 @@ Lecture::Lecture(std::string code, std::string title, int credits, int cap, Lect
 std::string Lecture::calculateGrading() {
     return "Lecture Grade";
 }
+std::string Lecture::getPrerequisites() const
+{
+    return Prerequisites;
+}

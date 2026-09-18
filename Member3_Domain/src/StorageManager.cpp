@@ -1,12 +1,12 @@
 #include "../include/StorageManager.h"
 #include "../include/Repository.h"
-#include "../../Member1_Domain/include/Person.h"
-#include "../../Member1_Domain/include/Course.h"
 
+#include "../../Member1_Domain/include/Person.h"
 #include "../../Member1_Domain/include/Student.h"
 #include "../../Member1_Domain/include/Lecturer.h"
 #include "../../Member1_Domain/include/Administrator.h"
 
+#include "../../Member1_Domain/include/Course.h"
 #include "../../Member1_Domain/include/Lecture.h"
 #include "../../Member1_Domain/include/Lab.h"
 #include "../../Member1_Domain/include/Project.h"
@@ -16,7 +16,6 @@
 #include <iostream>
 
 using namespace std;
-
 
 StorageManager::StorageManager(string userPath, string coursePath)
     : userFilePath(userPath),
@@ -28,8 +27,11 @@ StorageManager::StorageManager(string userPath, string coursePath)
 void StorageManager::loadAll(Repository<Person>& userRepo,
                              Repository<Course>& courseRepo)
 {
-    // Load users
-        ifstream userFile(userFilePath);
+
+    // LOAD USERS
+
+
+    ifstream userFile(userFilePath);
 
     if (userFile.is_open())
     {
@@ -43,13 +45,13 @@ void StorageManager::loadAll(Repository<Person>& userRepo,
             stringstream ss(line);
 
             string role;
-            string savedId;
+            string id;
             string name;
             string email;
             string password;
 
             getline(ss, role, '|');
-            getline(ss, savedId, '|');
+            getline(ss, id, '|');
             getline(ss, name, '|');
             getline(ss, email, '|');
             getline(ss, password);
@@ -58,28 +60,51 @@ void StorageManager::loadAll(Repository<Person>& userRepo,
 
             if (role == "STUDENT")
             {
-                person = new Student(name, email, password);
+                person = new Student(
+                    id,
+                    name,
+                    email,
+                    password
+                );
             }
             else if (role == "LECTURER")
             {
-                person = new Lecturer(name, email, password);
+                person = new Lecturer(
+                    id,
+                    name,
+                    email,
+                    password
+                );
             }
             else if (role == "ADMIN")
             {
-                person = new Administrator(name, email, password);
+                person = new Administrator(
+                    id,
+                    name,
+                    email,
+                    password
+                );
             }
 
             if (person != nullptr)
             {
-                userRepo.add(person->getID(), person);
+                userRepo.add(id, person);
             }
         }
 
         userFile.close();
+
+        cout << "Users loaded successfully." << endl;
+    }
+    else
+    {
+        cout << "User file not found." << endl;
     }
 
-    // Load courses
-        ifstream courseFile(courseFilePath);
+    // LOAD COURSES
+
+
+    ifstream courseFile(courseFilePath);
 
     if (courseFile.is_open())
     {
@@ -97,118 +122,88 @@ void StorageManager::loadAll(Repository<Person>& userRepo,
             string title;
             string creditsText;
             string capacityText;
+            string lecturerId;
+            string prerequisite;
 
             getline(ss, type, '|');
             getline(ss, code, '|');
             getline(ss, title, '|');
             getline(ss, creditsText, '|');
-            getline(ss, capacityText);
+            getline(ss, capacityText, '|');
+            getline(ss, lecturerId, '|');
+            getline(ss, prerequisite);
 
-            int credits = stoi(creditsText);
-            int capacity = stoi(capacityText);
-
-            Course* course = nullptr;
-
-            if (type == "LECTURE")
+            try
             {
-                course = new Lecture(
-                    code,
-                    title,
-                    credits,
-                    capacity,
-                    nullptr,
-                    ""
-                );
+                int credits = stoi(creditsText);
+                int capacity = stoi(capacityText);
+
+                Lecturer* lecturer = nullptr;
+
+                
+                if (lecturerId != "NONE")
+                {
+                    Person* person = userRepo.find(lecturerId);
+
+                    lecturer =
+                        dynamic_cast<Lecturer*>(person);
+                }
+
+                Course* course = nullptr;
+
+                if (type == "LECTURE")
+                {
+                    course = new Lecture(
+                        code,
+                        title,
+                        credits,
+                        capacity,
+                        lecturer,
+                        prerequisite
+                    );
+                }
+                else if (type == "LAB")
+                {
+                    course = new Lab(
+                        code,
+                        title,
+                        credits,
+                        capacity,
+                        lecturer,
+                        prerequisite
+                    );
+                }
+                else if (type == "PROJECT")
+                {
+                    course = new Project(
+                        code,
+                        title,
+                        credits,
+                        capacity,
+                        lecturer,
+                        prerequisite
+                    );
+                }
+
+                if (course != nullptr)
+                {
+                    courseRepo.add(code, course);
+                }
             }
-            else if (type == "LAB")
+            catch (const exception& e)
             {
-                course = new Lab(
-                    code,
-                    title,
-                    credits,
-                    capacity,
-                    nullptr,
-                    ""
-                );
-            }
-            else if (type == "PROJECT")
-            {
-                course = new Project(
-                    code,
-                    title,
-                    credits,
-                    capacity,
-                    nullptr,
-                    ""
-                );
-            }
-
-            if (course != nullptr)
-            {
-                courseRepo.add(code, course);
+                cout << "Invalid course data: "
+                     << e.what()
+                     << endl;
             }
         }
 
         courseFile.close();
+
+        cout << "Courses loaded successfully." << endl;
     }
-
-    cout << "Data loaded successfully." << endl;
-
-}
-
-
-void StorageManager::saveAll(Repository<Person>& userRepo,
-                             Repository<Course>& courseRepo)
-{
-    // Save users
-    ofstream userFile(userFilePath);
-
-    if (!userFile.is_open())
+    else
     {
-        cout << "Error: Could not open user file." << endl;
-        return;
+        cout << "Course file not found." << endl;
     }
-
-    vector<Person*> users = userRepo.getAll();
-
-    for (Person* person : users)
-    {
-        if (person != nullptr)
-        {
-            userFile << person->getID() << "|"
-                     << person->getName() << "|"
-                     << person->getEmail() << "|"
-                     << person->getPassword()
-                     << endl;
-        }
-    }
-
-    userFile.close();
-    // Save courses
-    ofstream courseFile(courseFilePath);
-
-    if (!courseFile.is_open())
-    {
-        cout << "Error: Could not open course file." << endl;
-        return;
-    }
-
-    vector<Course*> courses = courseRepo.getAll();
-
-    for (Course* course : courses)
-    {
-        if (course != nullptr)
-        {
-            courseFile << course->getCode() << "|"
-                       << course->getTitle() << "|"
-                       << course->getCreditValue() << "|"
-                       << course->getCapacity()
-                       << endl;
-        }
-    }
-
-    courseFile.close();
-
-    cout << "Data saved successfully." << endl;
-
 }

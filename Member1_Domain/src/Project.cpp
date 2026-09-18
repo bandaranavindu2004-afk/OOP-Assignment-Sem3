@@ -6,3 +6,7 @@ Project::Project(std::string code, std::string title, int credits, int cap, Lect
 std::string Project::calculateGrading() {
     return "Project Grade";
 }
+std::string Project::getPrerequisites() const
+{
+    return Prerequisites;
+}

@@ -22,7 +22,10 @@ private:
 
 public:
     Course(std::string code, std::string title, int credits, int cap, Lecturer* lec);
-    virtual ~Course() = default;
+    virtual ~Course();
+
+    Course(const Course&) = delete;
+    Course& operator=(const Course&) = delete;
 
     virtual std::string calculateGrading() = 0; 
 
@@ -33,13 +36,8 @@ public:
     int getCreditValue() const;
     int getCapacity() const;
     Lecturer* getAssignedLecturer() const;
-    
-    bool hasCapacity() const;
 
-    std::string getTitle() const;
-    int getCreditValue() const;
-    int getCapacity() const;
-    Lecturer* getAssignedLecturer() const;
+    bool hasCapacity() const;
 
     void setTitle(std::string title);
     void setCreditValue(int credits);

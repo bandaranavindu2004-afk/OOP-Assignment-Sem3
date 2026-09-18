@@ -11,8 +11,7 @@ private:
     static int AdministratorNumber;
 
 public:
-    Administrator(std::string name, std::string email, std::string password);
-    ~Administrator() override = default;
+    Administrator(std::string id,std::string name,std::string email,std::string password);
 
     void displayDashboard() override;
     

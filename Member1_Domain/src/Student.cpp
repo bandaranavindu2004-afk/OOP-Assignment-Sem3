@@ -9,8 +9,24 @@
 
 int Student::StudentNumber = 0;
 
-Student::Student(std::string name, std::string email, std::string password)
-    : Person("STU-" + std::to_string(++StudentNumber), name, email, password) {}
+Student::Student(std::string id,
+                 std::string name,
+                 std::string email,
+                 std::string password)
+    : Person(id, name, email, password)
+{
+    if (id.rfind("STU-", 0) == 0)
+    {
+        int number = std::stoi(id.substr(4));
+
+        if (number > StudentNumber)
+        {
+            StudentNumber = number;
+        }
+    }
+}
+
+
 
 void Student::displayDashboard() {
     std::cout << "=== Student Dashboard ===" << std::endl;

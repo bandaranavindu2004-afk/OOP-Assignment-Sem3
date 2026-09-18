@@ -12,7 +12,12 @@ private:
     std::vector<Course*> enrolledCourses;
 
 public:
-    Student(std::string name, std::string email, std::string password);
+
+    Student(std::string id,
+            std::string name,
+            std::string email,
+            std::string password);
+
     ~Student() override = default;
 
     void displayDashboard() override;

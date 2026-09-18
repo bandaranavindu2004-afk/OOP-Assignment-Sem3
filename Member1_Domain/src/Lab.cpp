@@ -6,3 +6,7 @@ Lab::Lab(std::string code, std::string title, int credits, int cap, Lecturer* le
 std::string Lab::calculateGrading() {
     return "Lab Grade";
 }
+std::string Lab::getPrerequisites() const
+{
+    return Prerequisites;
+}
