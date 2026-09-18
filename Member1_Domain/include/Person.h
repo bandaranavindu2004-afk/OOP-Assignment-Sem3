@@ -21,5 +21,7 @@ public:
 
     // Integration with Member 3's Utilities
     friend std::ostream& operator<<(std::ostream& os, const Person& p);
+
+    std::string getName() const;
 };
 #endif

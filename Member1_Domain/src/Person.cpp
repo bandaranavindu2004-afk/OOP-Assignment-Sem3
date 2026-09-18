@@ -15,3 +15,7 @@ void Person::getInfo() const {
 bool Person::checkPassword(std::string password) const {
     return Password == password;
 }
+
+std::string Person::getName() const {
+    return this->Name;
+}

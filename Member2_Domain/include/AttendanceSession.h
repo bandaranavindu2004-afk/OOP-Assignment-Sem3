@@ -21,6 +21,7 @@ class AttendanceSession{
         void markPresent(string studentID, string method);
         void closeSession();
         vector<AttendanceRecord> getRecords() const;
+        string getSessionId() const;
 };
 
 #endif

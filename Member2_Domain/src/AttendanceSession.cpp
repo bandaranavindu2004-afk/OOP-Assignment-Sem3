@@ -29,3 +29,7 @@ void AttendanceSession::closeSession(){
 vector<AttendanceRecord> AttendanceSession::getRecords() const{
     return records;
 }
+
+string AttendanceSession::getSessionId() const {
+    return this->sessionID;
+}
