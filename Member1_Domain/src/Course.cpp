@@ -60,3 +60,41 @@ const Timetable& Course::getTimetable() const {
 AttendanceRegister& Course::getAttendanceRegister() {
     return *attendanceRegister; 
 }
+
+
+std::string Course::getTitle() const {
+    return Title;
+}
+
+int Course::getCreditValue() const {
+    return CreditValue;
+}
+
+int Course::getCapacity() const {
+    return Capacity;
+}
+
+Lecturer* Course::getAssignedLecturer() const {
+    return assignedLecturer;
+}
+
+
+void Course::setTitle(std::string title) {
+    Title = title;
+}
+
+void Course::setCreditValue(int credits) {
+    CreditValue = credits;
+}
+
+void Course::setCapacity(int cap) {
+    if (cap >= enrolledStudents.size()) {
+        Capacity = cap;
+    } else {
+        std::cout << "Error: New capacity cannot be less than currently enrolled students (" << enrolledStudents.size() << ")!" << std::endl;
+    }
+}
+
+void Course::setAssignedLecturer(Lecturer* lec) {
+    assignedLecturer = lec;
+}
