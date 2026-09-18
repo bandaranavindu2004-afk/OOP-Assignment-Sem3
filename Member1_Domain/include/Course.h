@@ -29,6 +29,11 @@ public:
     void displayInfo() const; 
     
     std::string getCode() const;
+    std::string getTitle() const;
+    int getCreditValue() const;
+    int getCapacity() const;
+    Lecturer* getAssignedLecturer() const;
+    
     bool hasCapacity() const;
 
     void addStudent(Student* student);

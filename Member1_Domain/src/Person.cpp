@@ -19,3 +19,11 @@ bool Person::checkPassword(std::string password) const {
 std::string Person::getName() const {
     return this->Name;
 }
+
+std::string Person::getEmail() const {
+    return Email;
+}
+
+std::string Person::getPassword() const {
+    return Password;
+}

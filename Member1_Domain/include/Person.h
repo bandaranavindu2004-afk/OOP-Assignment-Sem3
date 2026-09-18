@@ -23,5 +23,7 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Person& p);
 
     std::string getName() const;
+    std::string getEmail() const;
+    std::string getPassword() const;
 };
 #endif

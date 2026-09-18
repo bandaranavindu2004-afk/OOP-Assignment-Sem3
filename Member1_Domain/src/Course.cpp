@@ -23,6 +23,21 @@ void Course::displayInfo() const {
 std::string Course::getCode() const {
     return Code;
 }
+std::string Course::getTitle() const {
+    return Title;
+}
+
+int Course::getCreditValue() const {
+    return CreditValue;
+}
+
+int Course::getCapacity() const {
+    return Capacity;
+}
+
+Lecturer* Course::getAssignedLecturer() const {
+    return assignedLecturer;
+}
 
 bool Course::hasCapacity() const {
     return enrolledStudents.size() < Capacity;
